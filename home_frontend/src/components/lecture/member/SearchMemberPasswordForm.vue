@@ -143,13 +143,22 @@ export default {
     },
     resetPw() {
       const { email, password } = this;
-      axios
+      // axios
+      //     .post("http://localhost:7777/member/applyNewPassword/", {
+      //       email, password,
+      //     })
+      //     .then(() => {
+      //       alert("비밀번호가 변경되었습니다.");
+      //     });
+
+      const res = axios
           .post("http://localhost:7777/member/applyNewPassword/", {
             email, password,
           })
-          .then(() => {
-            alert("비밀번호가 변경되었습니다.");
-          });
+      if (res) { 
+        alert("비밀번호가 변경되었습니다.");
+        this.$router.push("/sign-in");
+      }
     },
   },
 }
