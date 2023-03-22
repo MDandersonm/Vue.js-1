@@ -34,12 +34,12 @@ export default {
         axios
             .post("http://localhost:7777/member/sign-in", { email, password })
             .then((res) => {
-              if (res.data) {//토큰이오면
+              if (res.data) {//res.data가 토큰이다. 토큰이오면
                 alert("로그인 성공!");
                 console.log("res.data: ", res.data)
                 this.$store.state.isAuthenticated = true;
-                this.$cookies.set("user", res.data, 3600);//30분
-                localStorage.setItem("userInfo", JSON.stringify(res.data));
+                this.$cookies.set("user", res.data, 3600);//30분 여기서는 사용안함
+                localStorage.setItem("userInfo", JSON.stringify(res.data));//이것만 사용할것
                 this.isLogin = true;
                 this.$router.push("/");
               } else {
